@@ -26,3 +26,50 @@ Forwarding  https://a1b2c3.ngrok.io -> http://localhost:3000
 - Mobile browser
 - Webhooks
 - Any external service
+  
+### 🔐 (Recommended) Auth token
+Create a free account → get token → run once:
+```bash
+ngrok config add-authtoken YOUR_TOKEN
+```
+
+---
+
+## ⭐ Option 2: Cloudflare Tunnel (No URL expiry)
+### ✅ Best for
+- Long-running testing
+- Stable URLs
+- Production-like setup
+### 🔹 Install
+```bash
+npm install -g cloudflared
+```
+### 🔹 Start tunnel
+```bash
+cloudflared tunnel --url http://localhost:3000
+```
+### 🔹 Output
+```bash
+https://random-name.trycloudflare.com
+```
+- ✅ No login required
+- ✅ HTTPS by default
+- ❌ URL changes on restart (unless configured)
+
+---
+
+## ⭐ Option 3: LocalTunnel (Very simple)
+### 🔹 Install
+```bash
+npm install -g localtunnel
+```
+### 🔹 Start tunnel
+```bash
+lt --port 3000
+```
+### 🔹 Output
+```bash
+https://cool-name.loca.lt
+```
+- ❌ Sometimes slow
+- ❌ Less reliable for webhooks
